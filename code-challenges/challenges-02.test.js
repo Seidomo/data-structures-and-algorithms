@@ -68,7 +68,7 @@ CHALLENGE 5 - Stretch Goal
 Write a function that accepts an array of people objects and adds a new property called isAuthor to each object in the list. Set the value of the new property to true.
 
 The function should modify the object in place. Do not use a return statement.
-
+////
 For example:
 const people = [{ fullName: 'Octavia Butler' }, { fullName: 'Ray Bradbury' }];
 setStatusAsAuthor(people);
