@@ -5,7 +5,7 @@ const cheerio = require('cheerio');
 const Mustache = require('mustache');
 
 /* ------------------------------------------------------------------------------------------------
-
+////// contribution ALAN HUNG /////
 CHALLENGE 1 - Review
 
 Use the characters data below for all of the challenges except challenge 2.
@@ -139,12 +139,12 @@ This function should take in an array of data and a character name and return a 
 For example:
 hasChildrenValues(characters, 'Cersei') will return true
 hasChildrenValues(characters, 'Sansa') will return false
-
+//// contribuition ALAN HUNG //////
 todo: Write a function named hasChildrenValues
 todo: that uses Object.values
 todo: to determine if any given character in the data set has children.
     todo: first find the name inside an array 
-        todo: for loop
+        todo: for each
         todo: access the array by index
             todo: access the object by .
                 todo: need to get .name
@@ -155,15 +155,18 @@ todo: to determine if any given character in the data set has children.
         todo:if statment to compare if the name has children
 todo: return boolean (true or false)
 
-
+/// solved with the help of Alan Hung ////
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  let childrenValue = false
-  for(let i=0; i<arr.length; i++){
-
-  }
-
+  let childrenValue = false;
+ arr.forEach(objectsArray =>{
+   var getObjectValue = Object.values(objectsArray);
+   if(getObjectValue[0] === character || getObjectValue[1]===character){
+     childrenValue = !(getObjectValue[2] ===[]);
+   }
+ })
+return childrenValue;
 };
 
 /* ------------------------------------------------------------------------------------------------
