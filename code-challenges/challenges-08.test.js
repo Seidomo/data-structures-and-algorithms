@@ -27,7 +27,7 @@ function sayHello(request, response){
 }
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 2
+//CHALLENGE 2
 
 Write a function named oddValues that, given an array of integers as input, uses filter to return an array containing only the odd integers.
 
