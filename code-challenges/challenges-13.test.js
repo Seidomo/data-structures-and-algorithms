@@ -20,7 +20,7 @@ const $ = createSnippetWithJQuery(`
 `);
 
 const fixTheTypo = () => {
-$('.pear').text('Pear');
+ $('.pear').text('Pear');
 };
 
 /* ------------------------------------------------------------------------------------------------
