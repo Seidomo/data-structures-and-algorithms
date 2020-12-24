@@ -1,5 +1,5 @@
 'use strict';
-
+/////// contribiution Alan Hung //////
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
 
@@ -24,9 +24,7 @@ Next, write a function named getCurrentEvents that takes in the request and resp
 const createServer = () => {
   const express=require('express');
   const app=express();
-
-  // Routes go here
-  // Solution code here...
+  app.get('/events', getCurrentEvents);
 
   var server = app.listen(3301, function () {
     var port = server.address().port;
@@ -160,15 +158,27 @@ const currentEvents = {
 }
 
 function getCurrentEvents(request, response){
-  // Solution code here...
+  return response.send(mapCurrentEvents());
+
 }
 
 const mapCurrentEvents = () => {
-  // Solution code here...
+   const currentData = currentEvents.news.map(eventInstance => new Event(eventInstance));
+   return currentData;
+  
+   
 }
+ 
 
+  
 function Event(obj){
-  // Solution code here...
+  this.author = obj.author;
+  this.categories = obj.category;
+  this.id = obj.id;
+  this.summary = obj.summary;
+  this.img_url = obj.img_url;
+  this.date = obj.date;
+  this.title = obj.title;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -180,7 +190,10 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
-  // Solution code here...
+     let counter = arr.reduce((accumulatar, currentValue) => {
+       return accumulatar + 1;
+     },0)
+     return counter;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -240,7 +253,11 @@ let starWarsData = [{
 }];
 
 const returnNames = (arr) => {
-  // Solution code here...
+  let names = arr.reduce((accumulatar, currentValue) =>{
+    accumulatar.push(currentValue.name);
+    return accumulatar;
+  },[])
+  return names;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -252,10 +269,16 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (str) => {
-  // Solution code here...
+  let reverse = str.split('').reduce((reverseOrder, currentValue) =>{
+   return  currentValue + reverseOrder ;
+  },'')
+  console.log(str.split(''));
+  return reverse;
 };
 
-/* ------------------------------------------------------------------------------------------------
+ 
+/* 
+------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
 
 Write a function named countNumberOfChildren that, given the array of characters, below, uses reduce to return the total number of children in the data set.
