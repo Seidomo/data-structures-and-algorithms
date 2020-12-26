@@ -1,5 +1,5 @@
 'use strict';
-
+/////// contribiution Alan Hung //////
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
 
@@ -25,8 +25,7 @@ const createServer = () => {
   const express=require('express');
   const app=express();
 
-  // Routes go here
-  // Solution code here...
+  
   app.get('/events', getCurrentEvents);
 
   var server = app.listen(3301, function () {
@@ -273,9 +272,7 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 
 const reversedString = (str) => {
   let reverse = str.split('').reduce((reverseOrder, currentValue) =>{
-  
-    
-    return  currentValue + reverseOrder ;
+   return  currentValue + reverseOrder ;
   },'')
   console.log(str.split(''));
   return reverse;
