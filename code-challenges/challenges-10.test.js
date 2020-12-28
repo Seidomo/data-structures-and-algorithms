@@ -1,5 +1,7 @@
 'use strict';
 
+const { response } = require('express');
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
 
@@ -7,21 +9,24 @@ Build a simple express server. Connect a '/hello' route that sends a greeting of
 ------------------------------------------------------------------------------------------------ */
 
 const createServer = () => {
- const express = require('express')
- const app = express();
- app.get('/hello', function(req, res){
-   res.send('Hello My Name Is Seid');
- })
- app.get('/aboutme', function(req, res){
-   res.send('I am a software developer');
- })
- app.get('/favoritefoods', function(req, res){
-   res.send('Pasta, Tibs, Tire, Injera');
- })
- app.use('*',(request, response) =>{
-response.status(404).send('Sorry! Something Went Wrong.')
- })
+  const express = require('express');
+  const app = express();
 
+  app.get('/hello', (req, res) =>{
+    res.send('selam peace');
+  })
+
+  app.get('/aboutme', (req, res)=>{
+    res.send('I am a software developer');
+  })
+
+  app.get('/favoritefoods', (req, res) =>{
+    res.send('tibs, zilzil, pasta');
+  })
+
+  app.use('*', (req, res)=>{
+    response.status(404).send('sorry!');
+  })
   var server = app.listen(3301, function () {
     var port = server.address().port;
     console.log('Example app listening at port', port);
@@ -40,7 +45,15 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 ------------------------------------------------------------------------------------------------ */
 
 const count = (target, input) => {
-  // Solution code here...
+  var counter = 0;
+  input.map(oldarray =>{
+    oldarray.map(newarr =>{
+      if (target === newarr){
+        counter++;
+      }
+    })
+  })
+  return counter;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -54,7 +67,13 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 ------------------------------------------------------------------------------------------------ */
 
 const totalSum = (input) => {
-  // Solution code here...
+  let sumOfArr = 0;
+  input.map(firstArr =>{
+    firstArr.map(int =>{
+      sumOfArr += int;
+    })
+  })
+  return sumOfArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -70,7 +89,18 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
-  // Solution code here...
+ let finalArr = [];
+ let divideByFive;
+ input.map(firstArr =>{
+   firstArr.map(secondArr =>{
+     if(secondArr % 5 === 0){
+       divideByFive = secondArr;
+       finalArr.push(Math.pow(2, divideByFive));
+     }
+   })
+   finalArr.push([]);
+ })
+ return finalArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
