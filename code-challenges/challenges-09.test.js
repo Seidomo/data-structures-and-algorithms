@@ -24,8 +24,6 @@ Next, write a function named getCurrentEvents that takes in the request and resp
 const createServer = () => {
   const express=require('express');
   const app=express();
-
-  
   app.get('/events', getCurrentEvents);
 
   var server = app.listen(3301, function () {
