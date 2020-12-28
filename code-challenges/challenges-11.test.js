@@ -12,7 +12,12 @@ Note the space in between first and last names.
 You can assume that neither firstName nor lastName will be blank
 ------------------------------------------------------------------------------------------------ */
 const toLastNames = people => {
-  // Solution code here...
+   let fullName = people.forEach( function (items){
+     return people.filter(function(value){
+        return value.firstName === items.firstName && true;
+     }, []).length > 1 ? (items.firstName + " " + items.lastName) : (items.firstName);
+   }, [])
+   return fullName;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -68,10 +73,11 @@ Acceptable formats include:
 Your function should include a single regular expression pattern that matches any of these formats.
 
 Return either true or false.
+//// got it from code review of Nick ////
 ------------------------------------------------------------------------------------------------ */
 
 const validatePhoneNumber = (phoneNumber) => {
-  const regex = /(^(\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/;
+  const regex = /^(\(\d{3}\)|\d{3})(-| )?\d{3}(-| |)\d{4}$/;
   return regex.test(phoneNumber);
 };
 
