@@ -21,7 +21,7 @@ const createServer = () => {
   })
 
   app.get('/favoritefoods', (req, res) =>{
-    res.send('tibs, zilzil, pasta');
+    res.send('tibs, zilzil, pasta, tire');
   })
 
   app.use('*', (req, res)=>{
