@@ -66,3 +66,27 @@ called *toString* and returns the value in all as string.
 - *Carly Dekock*
 - *Jason D*
 - *Jason Q*
+
+
+### ll-Linked List
+
+
+- [x] [ll-Linked List](challenges/linkedList/linked-list.js)
+
+
+### Challenge
+
+define a method called *append* which takes a value as argument to add a node to the end of the list, another method
+called *insertBefore(value, newVal)* which adds a new node with the given newVal befor the given valueand another method 
+called *insertAfter(value, newVal)* which adds a new node with the given newVal after the given  value
+
+
+
+
+
+### attribiution:
+
+- *Nick Magruder*
+- *Carly Dekock*
+- *Jason D*
+- *Jason Q*
