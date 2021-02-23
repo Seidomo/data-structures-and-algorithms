@@ -1,3 +1,4 @@
+/* eslint-disable new-cap */
 'use strict';
 
 const linkedList = require('../linkedList/linked-list.js');
@@ -67,5 +68,7 @@ describe('testing the linked list module', () => {
 
     expect(test).toEqual('{ 0 } -> { 1 } -> { 2 } -> { 3 } -> {NULL}');
   });
+
+  
 
 });
