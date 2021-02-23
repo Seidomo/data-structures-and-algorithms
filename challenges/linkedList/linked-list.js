@@ -41,13 +41,54 @@ class LinkedList {
       const currentNode = current.value;
       current = current.next;
       string += `{ ${currentNode} } -> `;
-    }string += '{NULL}';
+    }string += '{null}';
     // console.log(string);
-  
+
     return string;
   }
 
-  
+  append(value) {
+    let current = this.head;
+    while (current) {
+      if (current.next === null) {
+        current.next = new Node(value);
+        return;
+      }
+      current = current.next;
+    }
+  }
+
+  insertBefore(value, newVal) {
+    let current = this.head;
+    let newNode = new Node(newVal);
+    while (current.next !== null) {
+      if (current.value === value) {
+        newNode.next = current;
+        this.head = newNode;
+      } else if (current.next.value === value) {
+        let temp = current.next;
+        current.next = newNode;
+        newNode.next = temp;
+      }
+      current = current.next;
+    }
+  }
+
+  insertAfter(value, newVal) {
+    let current =this.head;
+    let newNode = new Node(newVal);
+    while (current) {
+      if (current.value === value) {
+        let temp = current.next;
+        // console.log(temp);
+        current.next = newNode;
+        newNode.next = temp;
+      }
+      current = current.next;
+    }
+  }
+
+
 }
 
 // const linkList = new LinkdenList();
