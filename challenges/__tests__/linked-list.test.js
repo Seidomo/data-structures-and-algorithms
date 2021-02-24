@@ -66,9 +66,69 @@ describe('testing the linked list module', () => {
     list.insert(0);
     const test = list.toString();
 
-    expect(test).toEqual('{ 0 } -> { 1 } -> { 2 } -> { 3 } -> {NULL}');
+    expect(test).toEqual('{ 0 } -> { 1 } -> { 2 } -> { 3 } -> {null}');
   });
 
+<<<<<<< HEAD
   
 
 });
+=======
+  test('should add a node to the end of the linked list', () => {
+    const list = new linkedList.ll();
+    list.head = new linkedList.node(1);
+    list.head.next = new linkedList.node(2);
+    list.append(3);
+
+    expect(list.head.next.next.value).toEqual(3);
+  });
+
+  test('should add multiple nodes to the end of the list', () => {
+    const list = new linkedList.ll();
+    list.head = new linkedList.node(1);
+    list.append(2);
+    list.append(3);
+
+    expect(list.head.next.value).toEqual(2);
+    expect(list.head.next.next.value).toEqual(3);
+  });
+
+  test('should insert a node before a node located in the middle of list', () => {
+    const list = new linkedList.ll();
+    list.head = new linkedList.node(1);
+    list.head.next = new linkedList.node(2);
+    list.insertBefore(2, 4);
+
+
+    expect(list.head.next.value).toEqual(4);
+  });
+
+  test('should insert a node before before the first node of list', () => {
+    const list = new linkedList.ll();
+    list.head = new linkedList.node(1);
+    list.head.next = new linkedList.node(2);
+    list.insertBefore(1, 4);
+
+    expect(list.head.value).toEqual(4);
+  });
+
+  test('should insert a node after a node in the middle of the list', () => {
+    const list = new linkedList.ll();
+    list.head = new linkedList.node(1);
+    list.head.next = new linkedList.node(2);
+    list.insertAfter(1, 4);
+
+    expect(list.head.next.value).toEqual(4);
+  });
+
+  test('should insert a node after the last node of the list', () =>{
+    const list = new linkedList.ll();
+    list.head = new linkedList.node(1);
+    list.head.next = new linkedList.node(2);
+    list.insertAfter(2, 4);
+
+    expect(list.head.next.next.value).toEqual(4);
+  });
+});
+
+>>>>>>> b037f0d155be01e3879ed652911e1fe861cc5296
