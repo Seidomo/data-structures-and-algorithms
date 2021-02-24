@@ -69,14 +69,6 @@ describe('testing the linked list module', () => {
     expect(test).toEqual('{ 0 } -> { 1 } -> { 2 } -> { 3 } -> {null}');
   });
 
-<<<<<<< HEAD
-=======
-
-  
-
-});
-
->>>>>>> b4ecda2facd6ee717f931324e84567d22f60127b
   test('should add a node to the end of the linked list', () => {
     const list = new linkedList.ll();
     list.head = new linkedList.node(1);
