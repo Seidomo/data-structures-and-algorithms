@@ -46,29 +46,6 @@ class LinkedList {
 
     return string;
   }
-  getKthElement(head, k){
-    if(!head || k<1){
-      return null;
-    }
-    let current = this.head;
-    let nthlastCurrent = this.head;
-
-    for (let i=0; i<k - 1; i++){
-      current = current.next;
-      if(nthlastCurrent === null){
-        return null;
-      }
-      nthlastCurrent = nthlastCurrent.next;
-    }
-
-    while( nthlastCurrent.next !== null ){
-      nthlastCurrent = nthlastCurrent.next;
-      current = current.next;
-    }
-    return nthlastCurrent.value;
-  }
-
-
 
   append(value) {
     let current = this.head;
@@ -111,6 +88,28 @@ class LinkedList {
     }
   }
 
+  getKthElement(k){
+    if(this.head ===null || k<1){
+      return null;
+    }
+    let valueOne = this.head;
+    let valueTwo = this.head;
+
+    for (let i=0; i<k - 1; i++){
+
+      if(valueTwo === null){
+        return null;
+      }
+      valueTwo = valueTwo.next;
+    }
+
+    while( valueTwo.next !== null ){
+      valueOne = valueOne.next;
+      valueTwo = valueTwo.next;
+
+    }
+    return valueOne.value;
+  }
 
 }
 

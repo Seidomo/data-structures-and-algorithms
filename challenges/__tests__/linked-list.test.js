@@ -69,11 +69,14 @@ describe('testing the linked list module', () => {
     expect(test).toEqual('{ 0 } -> { 1 } -> { 2 } -> { 3 } -> {null}');
   });
 
+<<<<<<< HEAD
+=======
 
   
 
 });
 
+>>>>>>> b4ecda2facd6ee717f931324e84567d22f60127b
   test('should add a node to the end of the linked list', () => {
     const list = new linkedList.ll();
     list.head = new linkedList.node(1);
@@ -129,6 +132,53 @@ describe('testing the linked list module', () => {
 
     expect(list.head.next.next.value).toEqual(4);
   });
-});
 
+  test('should return null if the value is greater than the list', () =>{
+    const list = new linkedList.ll();
+    list.head = new linkedList.node(1);
+    list.head.next = new linkedList.node(2);
+    const test = list.getKthElement(5);
+
+    expect(test).toEqual(null);
+  });
+
+  test('should return where the value and the length of the list are the same', () => {
+    const list = new linkedList.ll();
+    list.head = new linkedList.node(0);
+    list.head.next = new linkedList.node(1);
+    list.head.next.next = new linkedList.node(2);
+    const test = list.getKthElement(3);
+
+    expect(test).toEqual(0);
+  });
+
+  test('should return where the value is not a posetive integer', () => {
+    const list = new linkedList.ll();
+    list.head = new linkedList.node(0);
+    list.head.next = new linkedList.node(1);
+    list.head.next.next = new linkedList.node(2);
+    const test = list.getKthElement(7);
+
+    expect(test).toEqual(null);
+  });
+
+  test('should return where the linked list is of a size 1', () => {
+    const list = new linkedList.ll();
+    list.head = new linkedList.node(0);
+    const test = list.getKthElement(1);
+
+    expect(test).toEqual(0);
+  });
+
+  test('should return the value is not at the end, but somewhere in the middle', () => {
+    const list = new linkedList.ll();
+    list.head = new linkedList.node(0);
+    list.head.next = new linkedList.node(1);
+    list.head.next.next = new linkedList.node(2);
+    list.head.next.next.next = new linkedList.node(3);
+    const test = list.getKthElement(2);
+
+    expect(test).toEqual(2);
+  });
+});
 

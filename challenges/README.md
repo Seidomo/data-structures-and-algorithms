@@ -90,3 +90,25 @@ called *insertAfter(value, newVal)* which adds a new node with the given newVal 
 - *Carly Dekock*
 - *Jason D*
 - *Jason Q*
+
+
+### ll-Linked List
+
+
+- [x] [ll-kth-from-end](challenges/linkedList/linked-list.js)
+
+
+### Challenge
+
+Write a method for the Linked List class which takes a value (k) as a parameter. Return the nodes value that is k from the end of the linked list. You have access to the Node class and all the properties of the list. 
+
+
+
+
+### attribiution:
+
+- *Nick Magruder*
+- *Carly Dekock*
+- *Jason D*
+- *Jason Q*
+- *Bill*
