@@ -112,3 +112,23 @@ Write a method for the Linked List class which takes a value (k) as a parameter.
 - *Jason D*
 - *Jason Q*
 - *Bill*
+
+
+### ll-Zip List
+
+
+- [x] [ll-Zip list](challenges/llZip/ll_z.js)
+
+
+### Challenge
+
+write a function called ``` zipList ``` which takes two linked lists as argument and merge the linked list togethre into one so that the nodes alternate between the two lists and return a difference to the zipped file.
+
+
+
+### attribiution:
+
+- *Nick Magruder*
+- *Carly Dekock*
+- *Jason D*
+- *Jason Q*
