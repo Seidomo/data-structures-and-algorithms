@@ -111,8 +111,62 @@ class LinkedList {
     return valueOne.value;
   }
 
-}
+  // zipList(ll1, ll2){
+  //   let mergedList = new LinkedList();
+  //   let l1Pointer = ll1;
+  //   let l2Pointer = ll2;
 
+  //   while(l1Pointer || l2Pointer){
+
+  //     if(l1Pointer){
+  //       mergedList.append(l1Pointer.newValue);
+  //       l1Pointer = l1Pointer.next;
+
+  //     }
+
+  //     if(l2Pointer){
+  //       mergedList.append(l2Pointer.newValue);
+  //       l2Pointer = l2Pointer.next;
+
+  //     }
+  //   }
+
+  //   return mergedList.head;
+
+  // }
+
+  
+
+}
+function zipList(listOne, listTwo) {
+  const newll = new LinkedList();
+  listOne = listOne.head;
+  listTwo = listTwo.head;
+  newll.head = new Node(listOne.value);
+  listOne = listOne.next;
+
+  while (listOne || listTwo) {
+    if (listOne && listTwo) {
+      newll.append(listTwo.value);
+      newll.append(listOne.value);
+      listTwo = listTwo.next;
+      listOne = listOne.next;
+    }
+    else if (!listOne && listTwo) {
+      newll.append(listTwo.value);
+      listTwo = listTwo.next;
+    }
+    else if (listOne && !listTwo) {
+      newll.append(listOne.value);
+      listOne = listOne.next;
+    }
+    else {
+      return;
+    }
+  }
+  newll.toString();
+  return newll;
+}
 // const linkList = new LinkdenList();
 
 
@@ -128,5 +182,6 @@ class LinkedList {
 module.exports = {
   node: Node,
   ll: LinkedList,
+  zipList : zipList,
 };
 
