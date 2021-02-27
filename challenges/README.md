@@ -1,6 +1,6 @@
 ### 401 code challenges
 
-- [x] [arrary-reverse](https://github.com/Seidomo/data-structures-and-algorithms/challenges/arrayReverse/array-reverse.js)
+- [x] [arrary-reverse](challenges/arrayReverse/array-reverse.js)
 
 - [x] [array-shift](challenges/arrayShift/array-shift.js)
 
