@@ -10,6 +10,7 @@ class Stack {
     this.top = null;
   }
   push(node) {
+      
     if (this.isEmpty()) {
       this.top = node;
       return;
@@ -86,3 +87,9 @@ let queue = new Queue();
 queue.enqueue(nodeA);
 queue.enqueue(nodeB);
 console.log(queue);
+
+
+module.exports = {
+  Stack: Stack,
+  Queue: Queue,
+};
