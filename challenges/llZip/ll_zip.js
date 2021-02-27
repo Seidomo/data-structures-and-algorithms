@@ -78,7 +78,7 @@ function zipList(ll1, ll2) {
     }
   }
   zippedList.toString();
-//   console.log(zippedList);
+  //   console.log(zippedList);
   return zippedList;
 }
 // const linkList = new LinkdenList();
