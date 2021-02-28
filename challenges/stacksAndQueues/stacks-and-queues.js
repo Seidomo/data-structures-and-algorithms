@@ -10,7 +10,7 @@ class Stack {
     this.top = null;
   }
   push(node) {
-      
+
     if (this.isEmpty()) {
       this.top = node;
       return;
@@ -21,18 +21,26 @@ class Stack {
     this.top;
   }
   pop() {
-    let temp = this.top;
-    this.top = temp.next;
-    temp.next = null;
-    return temp.value;
+    if (this.isEmpty()) {
+      throw 'null';
+    } else {
+      let temp = this.top;
+      this.top = temp.next;
+      temp.next = null;
+      return temp.value;
+    }
   }
   isEmpty(){
     return this.top === null;
   }
   peek(){
-    if (this.top) return this.top.value;
+    if (this.isEmpty()){
+      throw 'null';
+    }else{
+      return this.top.value;
+    }
 
-    throw 'null';
+
 
 
   }
@@ -44,7 +52,7 @@ class Queue {
   }
   enqueue(node) {
     if (this.isEmpty()) {
-      this.font = node;
+      this.front = node;
       this.rear = node;
     } else {
       this.rear.next = node;
@@ -52,10 +60,15 @@ class Queue {
     }
   }
   dequeue() {
-    let temp = this.front;
-    this.front = temp.next;
-    temp.next = null;
-    return temp.value;
+    if(this.isEmpty()){
+      throw 'error';
+    }else{
+      let temp = this.front;
+      this.front = temp.next;
+      temp.next = null;
+      return temp.value;
+    }
+
   }
   isEmpty(){
     return this.front === null;
@@ -64,32 +77,35 @@ class Queue {
     if(this.isEmpty()){
       throw 'error';
 
+    }else{
+      return this.front.value;
     }
-    return this.front.value;
+
   }
 
 
 
 }
-let stack = new Stack();
-let nodeA = new Node('first');
-let nodeB = new Node('second');
+// let stack = new Stack();
+// let nodeA = new Node('first');
+// let nodeB = new Node('second');
 
 
 
-stack.push(nodeA);
-stack.push(nodeB);
+// stack.push(nodeA);
+// stack.push(nodeB);
 
-let top = stack.pop();
-console.log(top);
-let queue = new Queue();
+// let top = stack.pop();
+// console.log(top);
+// let queue = new Queue();
 
-queue.enqueue(nodeA);
-queue.enqueue(nodeB);
-console.log(queue);
+// queue.enqueue(nodeA);
+// queue.enqueue(nodeB);
+
 
 
 module.exports = {
-  Stack: Stack,
-  Queue: Queue,
+  node: Node,
+  stack: Stack,
+  queue: Queue,
 };
