@@ -40,4 +40,4 @@ Create a BinarySearchTree class
 
 - UML
 
-- ![UML](./assets/lab015.png)
+- ![UML](../assets/lab015.png)
