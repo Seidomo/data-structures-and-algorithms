@@ -1,44 +1,5 @@
 'use strict';
 
-/**
- * Kary Tree stuff
- */
-
-// class KaryNode {
-//   constructor(value, size) {
-//     this.value = value;
-//     this.children = new Array(size);
-//   }
-// }
-
-// class KaryTree {
-//   constructor(k) {
-//     this.root = null;
-//     this.k = k;
-//   }
-
-//   breadth() {
-
-//     let current = null;
-//     let queue = [];
-
-//     queue.unshift(this.root);
-
-//     while (queue.length) {
-
-//       current = queue.pop();
-//       console.log(current.value);
-
-//       for (let i = 0; i < current.children.length; i++) {
-//         if (current.children[i]) {
-//           queue.unshift(current.children[i]);
-//         }
-//       }
-//     }
-
-//   }
-// }
-
 
 /**
  * Normal Tree stuff!
@@ -207,15 +168,7 @@ class BinaryTree{
 // tree.traverseWithStack();
 // tree.breadth();
 
-// const karyTree = new KaryTree(3);
 
-// karyTree.root = new KaryNode(0, karyTree.k);
-// karyTree.root.children[0] = new KaryNode(1, karyTree.k);
-// karyTree.root.children[1] = new KaryNode(2, karyTree.k);
-// karyTree.root.children[2] = new KaryNode(3, karyTree.k);
-// karyTree.root.children[0].children[0] = new KaryNode(5, karyTree.k);
-
-// karyTree.breadth();
 module.exports = {
   Node,
   Tree,
