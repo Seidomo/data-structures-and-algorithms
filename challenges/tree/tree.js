@@ -164,9 +164,7 @@ class BinaryTree{
 // console.log(trees.contains(3));
 
 
-// tree.traverse();
-// tree.traverseWithStack();
-// tree.breadth();
+
 
 
 module.exports = {

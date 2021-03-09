@@ -1,10 +1,15 @@
 ### TREES
 
 
+### Challenge 16
 
 
+- write a method called find-maximun-value that returns the maximum value  
+stored in the tree.
 
-### Challenge 13
+``` maxValue ```
+
+### Challenge 15
 
 
 * To create a node class that has properties for the value stored in the node, the left child node, and the right child node.
@@ -35,9 +40,11 @@ Create a BinarySearchTree class
 - *Carly Dekock*
 - *Jason D*
 - *Jason Q*
-- *Bill*
+
 
 
 - UML
 
-- ![UML](../assets/lab015.png)
+- ![UML lab 15](../assets/lab015.png)
+
+- ![UML lab 16](../assets/lab16.png)
