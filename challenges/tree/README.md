@@ -34,7 +34,7 @@ Create a BinarySearchTree class
 
 
 
-### attribiution:
+### attribiution to:
 
 
 - *Carly Dekock*
