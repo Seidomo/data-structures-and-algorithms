@@ -16,5 +16,11 @@
 
 - [x] [Stacks-And-Queues](challenges/stacksAndQueues/stacks-and-queues.js)
 
+- [x] [Animal shelter](challenges/fifoAnimalShelter/fifo-animal-shelter.js)
+
+- [x] [Bracket validation](challenges/multiBracketValidatipon/multi-bracket-validation.js)
+
+- [x] [Trees](./challenges/tree/tree.js)
+
 
 

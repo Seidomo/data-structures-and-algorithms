@@ -47,3 +47,5 @@ describe('testing methods on both trees', () => {
     expect(tree.maxValue()).toEqual(4);
   });
 });
+
+///////////////////////////////////////////////////////////////////////////////////
