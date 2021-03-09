@@ -5,7 +5,7 @@
 
 
 - write a method called find-maximun-value that returns the maximum value  
-stored in the tree.
+stored in the tree by comparing both the left and the right side.
 
 ``` maxValue ```
 
