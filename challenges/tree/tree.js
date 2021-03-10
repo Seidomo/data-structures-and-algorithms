@@ -84,8 +84,28 @@ class Tree {
     return findMax(current);
   }
 
+ 
+//   breadthfirst(){
+//     let newArr = [];
+//     if (!root) return;
+//     let unique = new Tree();
+//     unique.enqueue(root);
 
-}
+//     while(unique.front){
+//       if(unique.front.value.left) unique.enqueue(unique.front.value.left);
+//       if(unique.front.value.right) unique.enqueue(unique.front.value.right);
+
+//       let removed = unique.dequeue();
+//       newArr.push(removed.value);
+//       console.log(newArr);
+//     }
+//     return newArr;
+//   }
+
+// }
+
+
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
@@ -148,7 +168,7 @@ class BinaryTree{
 // tree.root = new Node(1);
 // tree.root.left = new Node(2);
 // tree.root.left.left = new Node(3);
-// tree.root.left.right = new Node(4);
+// tree.root.left.right = new Node(2);
 // tree.root.right = new Node(5);
 // tree.root.right.right = new Node(6);
 
