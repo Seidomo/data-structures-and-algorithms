@@ -84,32 +84,31 @@ class Tree {
     return findMax(current);
   }
 
- 
-//   breadthfirst(){
-//     let newArr = [];
-//     if (!root) return;
-//     let unique = new Tree();
-//     unique.enqueue(root);
+  breadth() {
 
-//     while(unique.front){
-//       if(unique.front.value.left) unique.enqueue(unique.front.value.left);
-//       if(unique.front.value.right) unique.enqueue(unique.front.value.right);
+    let current = null;
+    let queue = [];
 
-//       let removed = unique.dequeue();
-//       newArr.push(removed.value);
-//       console.log(newArr);
-//     }
-//     return newArr;
-//   }
+    queue.unshift(this.root);
 
-// }
+    while (queue.length) {
 
+      current = queue.pop();
+      // console.log(current.value);
 
-
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
+      if (current.left) {
+        queue.unshift(current.left);
+      }
+      if (current.right) {
+        queue.unshift(current.right);
+      }
+    }
+  }
+  
+}
 
 class BinaryTree{
+
   constructor(){
     this.root = null;
   }
@@ -163,22 +162,22 @@ class BinaryTree{
 }
 
 // const trees = new BinaryTree();
-// const tree = new Tree();
+const tree = new Tree();
 
-// tree.root = new Node(1);
-// tree.root.left = new Node(2);
-// tree.root.left.left = new Node(3);
-// tree.root.left.right = new Node(2);
-// tree.root.right = new Node(5);
-// tree.root.right.right = new Node(6);
+tree.root = new Node(1);
+tree.root.left = new Node(2);
+tree.root.left.left = new Node(3);
+tree.root.left.right = new Node(2);
+tree.root.right = new Node(5);
+tree.root.right.right = new Node(6);
 
 // trees.add(1);
 // trees.add(2);
 // trees.add(3);
 // trees.add(4);
 
-// console.log(tree.preOrder());
-// console.log(tree.postOrder());
+console.log(tree.breadth());
+console.log(tree.postOrder());
 // console.log(tree.inOrder());
 // console.log(trees.inOrder());
 // console.log(trees.contains(3));
