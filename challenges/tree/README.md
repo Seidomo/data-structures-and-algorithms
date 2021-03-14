@@ -1,5 +1,11 @@
 ### TREES
 
+
+### Challenge 18 
+
+- Write a function called FizzBuzzTree which takes a k-ary tree as an argument.
+
+
 ### Challenge 17
 
 - Write a breadth first traversal method which takes a Binary Tree as its unique input.
