@@ -34,6 +34,23 @@ class LinkedList {
 
     current.next = node;
   }
+
+  includes(value) {
+    let current = this.head;
+    while (current) {
+      if (value === current.value) {
+        // console.log(true);
+        // current = current.next;
+        return true;
+      } else if (current.next === null) {
+        // console.log(false);
+        return false;
+      } else {
+        current = current.next;
+      }
+    }
+  }
+
 }
 
 class HashTable {
@@ -80,25 +97,41 @@ class HashTable {
 
   // takes in a key and returns the value
   get(key) {
-    let index = this.hash(key);
+    let hash = this.hash(key);
+    let bucket = this.buckets[hash];
+    let current = bucket.head;
+
+    while (current){
+      if(current.value[key]) {
+        return current.value[key];
+      } else if (current.next === null) {
+        return null;
+      } else {
+        current = current.next;
+      }
+    }
+  }
 
   }
-}
+
 
 let table = new HashTable(1024);
 
-console.log(table.hash('Jacob'));
+// console.log(table.hash('Jacob'));
 
-table.add('Jacob', 'instructor');
-table.add('John', 'test');
-table.add('Xena', 'another value');
-table.add('johnjacobjingleheimer', 128949834);
+// table.add('Jacob', 'instructor');
+// table.add('John', 'test');
+// table.add('Xena', 'another value');
+// table.add('johnjacobjingleheimer', 128949834);
 
-console.log(JSON.stringify(table));
+// console.log(JSON.stringify(table));
+
+table.add('jacob', 'instructor');
+table.add('jacbo', 'ta');
 
 
 module.exports = {
-  node: Node,
-  ll: LinkedList,
-  hashTable : HashTable,
+   Node,
+   LinkedList,
+   HashTable,
 };
