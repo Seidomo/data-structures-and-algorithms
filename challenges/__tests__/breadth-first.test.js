@@ -1,18 +1,18 @@
-const graphs = require('../graph/graph.js');
+'use strict';
 
+const graphs = require('../breadthFirst/breadth-first.js');
 
+describe('Testing a breadth first traversla on a graph', () =>{
 
-
-describe('testing if the graph works', () => {
-  test('shoul add a vertex to the graph', () =>{
+  test('should traverse the graph', () =>{
     let graph = new graphs.Graph();
 
-    let one = new graphs.Vertex('one');
-    let two = new graphs.Vertex('two');
-    let three = new graphs.Vertex('three');
-    let four = new graphs.Vertex('four');
-    let five = new graphs.Vertex('five');
-    let six = new graphs.Vertex('six');
+    let one = new graphs.Vertex('101');
+    let two = new graphs.Vertex('201');
+    let three = new graphs.Vertex('301');
+    let four = new graphs.Vertex('401');
+    let five = new graphs.Vertex('code');
+    let six = new graphs.Vertex('fellows');
 
 
     graph.addNode(one);
@@ -28,30 +28,11 @@ describe('testing if the graph works', () => {
     graph.addEdge(four, two);
     graph.addEdge(four, five);
     graph.addEdge(two, six);
+    console.log('seid', graph.breadthFirst(one).size);
 
-    expect(graph.adjacencyList.get(one)).toBeTruthy();
+    expect(graph.breadthFirst(one)).toBeTruthy();
+    expect(graph.breadthFirst(one).size).toEqual(6);
 
-
-  });
-
-  test('should succesfully add a new edge to the graph', () =>{
-    let graph = new graphs.Graph();
-    let one = new graphs.Vertex('one');
-    let two = new graphs.Vertex('two');
-
-    graph.addNode(one);
-    graph.addNode(two);
-    graph.addEdge(one, two);
-
-    expect(graph.adjacencyList.get(one)[0].vertex.value).toEqual('two');
-  });
-
-  test('should succesfully add a node to the graph', () =>{
-    let graph = new graphs.Graph();
-    let one = new graphs.Vertex('one');
-    graph.addNode(one);
-    // console.log('add', graph.adjacencyList.get(one));
-    expect(graph.adjacencyList.get(one)).toBeTruthy();
   });
 
   test('should return the size of the graph', () =>{
@@ -78,10 +59,10 @@ describe('testing if the graph works', () => {
     graph.addEdge(four, two);
     graph.addEdge(four, five);
     graph.addEdge(two, six);
+    console.log('seid', graph.breadthFirst(one));
 
 
     expect(graph.breadthFirst(one).size).toEqual(6);
 
   });
-
 });
