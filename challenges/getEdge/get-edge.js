@@ -13,6 +13,7 @@ class Edge {
   }
 }
 
+
 class Graph {
   constructor() {
     this.adjacencyList = new Map(); // key = some vertex / value = some edge
@@ -99,32 +100,33 @@ class Graph {
     return graphArr.lenght;
   }
 
-  getEdge(city){
-    let cost = 0;
-    let arr = [];
-    if(this.adjacencyList[city[0]]){
-      return 'False, 0';
-    }
+  //   getEdge(city){
+  //     let cost = 0;
+  //     let arr = [];
+  //     if(this.adjacencyList[city[0]]){
+  //       return 'False, 0';
+  //     }
 
-    for(let i = 0; i < city.length - 1; i++){
-      let neighbors = this.getNeighbors(city[i]);
-      let found = false;
+  //     for(let i = 0; i < city.length - 1; i++){
+  //       let neighbors = this.getNeighbors(city[i]);
+  //       let found = false;
 
-      for(let j = 0; j < neighbors.length; i++){
-        if(neighbors[j][0] === city[i + 1]){
-          found + true;
-          cost += neighbors[j][1];
-        }
-      }
-      if(!found){
-        return 'False, 0';
-      }
-      arr.pop();
-    }
-    return `True, ${cost}`;
-  }
+  //       for(let j = 0; j < neighbors.length; i++){
+  //         if(neighbors[j][0] === city[i + 1]){
+  //           found + true;
+  //           cost += neighbors[j][1];
+  //         }
+  //       }
+  //       if(!found){
+  //         return 'False, 0';
+  //       }
+  //       arr.pop();
+  //     }
+  //     return `True, ${cost}`;
+  //   }
 
 }
+
 
 let test = new Graph();
 
@@ -152,7 +154,7 @@ test.addEdge(two, six, 54);
 
 
 console.log(test.breadthFirst(one));
-// console.log(test.getEdge(['one', 'four']));
+console.log(getEdge(test, ['one', 'four']));
 
 module.exports ={
   Graph,
