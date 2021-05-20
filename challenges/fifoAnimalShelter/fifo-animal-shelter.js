@@ -1,71 +1,104 @@
 'use strict';
 
+class Animal {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
 
-class AnimalShelter{
-  constructor(){
+class Dog extends Animal {
+  constructor(value) {
+    super('dog');
+  }
+}
+
+class Cat extends Animal {
+  constructor(value) {
+    super('cat');
+  }
+}
+
+class AnimalShelter {
+  constructor() {
+    this.cat = new Queue();
+    this.dog = new Queue();
+    // this.front = null;
+    // this.rear = null;
+  }
+
+  shelterEnqueue(animal) {
+    if (animal.value === 'cat') {
+      this.cat.enqueue(animal);
+    } else {
+      this.dog.enqueue(animal);
+    }
+  }
+
+  shelterDequeue(pref) {
+    if (pref === 'dog') {
+      return this.dog.dequeue();
+    } else if (pref === 'cat') {
+      return this.cat.dequeue();
+    } else {
+      return null;
+    }
+  }
+}
+
+class Queue {
+  constructor() {
     this.front = null;
     this.rear = null;
   }
 
-  enqueue(animal){
-    if(!animal) return null;
-    if(!animal !== 'cat' && animal !== 'dog') return `Queue only for 'cat' or 'dog'.`;
-    animal = {animal, next: null};
-    console.log(animal);
-    if(!this.front){
-      this.front = animal;
-      this.rear = animal;
-      return this.front;
-    }
-
-    if(this.front){
-      this.rear.next = animal;
-      this.rear = animal;
-      return this.front;
+  enqueue(node) {
+    if (this.isEmpty()) {
+      this.front = node;
+      this.rear = node;
+    } else {
+      this.rear.next = node;
+      this.rear = node;
     }
   }
 
-
-  dequeue(pref){
-    if(!pref){
-      let adopt = this.front;
-      this.front = this.front.next;
-      return adopt.pref;
+  dequeue() {
+    if (this.isEmpty()) {
+      throw 'Error no animals in queue';
+    } else {
+      let temp = this.front;
+      this.front = temp.next;
+      temp.next = null;
+      return temp.value;
     }
-
-    if(pref !== 'cat' && pref !== 'dog') return null;
-
-    if (pref === this.front.animal){
-      let adopt = this.front.next;
-      return adopt.pref;
-    }
-
-    let current = this.front;
-    while(current.next && current.next.animal !== pref){
-      current.animal;
-      current = current.next;
-    }
-    if(!current.next) return `no pref in shelter`;
-    let adopt = current.next;
-    current.next = adopt.next;
-    return adopt.pref;
-
   }
 
-  
-
+  isEmpty() {
+    return this.front === null;
+  }
 }
 
-let see = new AnimalShelter();
+// let shelter = new AnimalShelter();
+// shelter.shelterEnqueue(new Dog());
+// shelter.shelterEnqueue(new Cat());
+// console.log(shelter);
+// shelter.shelterEnqueue(new Dog());
+// console.log(shelter);
+// console.log(shelter.shelterDequeue('dog'));
+// console.log(shelter);
+// shelter.shelterEnqueue(new Dog());
+// console.log(shelter.shelterDequeue('cat'));
+
+// let dog = new Animal('dog');
+// let cat = new Animal('cat');
+
+// console.log(dog);
 
 
-
-see.enqueue('dog');
-see.enqueue('rat');
-
-see.enqueue('cat');
-see.dequeue('dog');
-
-
-
-module.exports= AnimalShelter;
+module.exports = {
+  Animal,
+  Dog,
+  Cat,
+  AnimalShelter,
+  Queue,
+};

@@ -14,10 +14,10 @@ const createServer = () => {
 
   app.get('/', (req, res)=>{
     res.status(200).send('sorry wrong route');
-  })
+  });
   app.delete('/things/1', (req, res)=>{
     res.status(405).send('sorry please try again');
-  })
+  });
 
   var server = app.listen(3000, function () {
     var port = server.address().port;
@@ -41,12 +41,12 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 ------------------------------------------------------------------------------------------------ */
 
 const toTitleCase = (arr) => {
-  for (let newArray of arr){
-    newArray1 = [];
-    newArray = newArray.charAt(0).toUpperCase() + newArray.substr(1);
-    newArray1.push(newArray);
-  }
-  return toTitleCase;
+  return arr.map(string => {
+    let capital = string.charAt(0).toUpperCase();
+    let caseChanger = string.split('');
+    caseChanger.splice(0, 1, capital);
+    return caseChanger.join('');
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -122,6 +122,18 @@ let starWarsData = [{
 
 let biggerThanLuke = (arr) => {
   // Solution code here...
+  let heavyArray = arr.map(person => {
+    let threshhold = Number(arr[0].mass);
+    if(Number(person.mass) > threshhold){
+      console.log(Number(person.mass));
+      return person.name;
+    } else {
+      return '';
+    }
+  });
+  const smallerArray = heavyArray.filter(name => name.length > 0);
+  const biggerString = smallerArray.join(' - ');
+  return biggerString;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -140,6 +152,35 @@ This data could be sorted by name or price.
 
 const sortBy = (property, arr) => {
   // Solution code here...
+  if(property === 'name'){
+    arr.sort(function(a, b) {
+      let proA = a.name;
+      let proB = b.name;
+      if (proA < proB) {
+        return -1;
+      }
+      if (proA > proB) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    return arr;
+  } else {
+    arr.sort(function(a, b) {
+      let proA = a.price;
+      let proB = b.price;
+      if (proA < proB) {
+        return -1;
+      }
+      if (proA > proB) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    return arr;
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -156,6 +197,8 @@ https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
   // Solution code here...
+  const regex = /\bhttps:\/\//gm;
+  return regex.test(url);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -179,6 +222,27 @@ Here is a sample board:
 
 const detectTicTacToeWin = (board) => {
   // Solution code here...
+  const diagonalOne = board.map((row, idx) => row[idx]);
+  const diagonalTwo = board.map((row, idx) => row[(2-idx)]);
+  const columnOne = board.map(row => row[0]);
+  const columnTwo = board.map(row => row[1]);
+  const columnThree = board.map(row => row[2]);
+  const checker = [];
+  checker.push(board[0], board[1], board[2], columnOne, columnTwo, columnThree, diagonalOne, diagonalTwo);
+
+  const checkForWin = checker.reduce((accum, path) => {
+    if(accum === true){
+      accum = true;
+    } else if(path.includes('')){
+      accum = false;
+    } else if(path[0] === path[1] && path[1] === path[2]){
+      accum = true;
+    } else {
+      accum = false;
+    }
+    return accum;
+  }, false);
+  return checkForWin;
 };
 
 /* ------------------------------------------------------------------------------------------------

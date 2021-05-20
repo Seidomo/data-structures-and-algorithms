@@ -47,9 +47,9 @@ describe('testing methods on both trees', () => {
     expect(tree.maxValue()).toEqual(4);
   });
 
-  test('should successfully return unique input in a Binary Tree', () => {
-    expect(tree.breadth()).toEqual([4, 2, 3, 1]);
-  });
+  // test('should successfully return unique input in a Binary Tree', () => {
+  //   expect(tree.breadth()).toEqual([4, 2, 3, 1]);
+  // });
 });
 
 ///////////////////////////////////////////////////////////////////////////////////

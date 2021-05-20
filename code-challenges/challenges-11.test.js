@@ -3,7 +3,7 @@
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
 
-Write a function that iterates over an array of people objects 
+Write a function that iterates over an array of people objects
 and creates a new list of each person's full name using the array method 'map'.
 Each object will have the shape {firstName:string, lastName:string}
 E.g. [ { firstName:"Jane", lastName:"Doe" }, { firstName:"James", lastName:"Bond"}]
@@ -12,12 +12,10 @@ Note the space in between first and last names.
 You can assume that neither firstName nor lastName will be blank
 ------------------------------------------------------------------------------------------------ */
 const toLastNames = people => {
-   let fullName = people.forEach( function (items){
-     return people.filter(function(value){
-        return value.firstName === items.firstName && true;
-     }, []).length > 1 ? (items.firstName + " " + items.lastName) : (items.firstName);
-   }, [])
-   return fullName;
+  const fullNames = people.map(value => {
+    return `${value.firstName} ${value.lastName}`;
+  });
+  return fullNames;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -50,8 +48,8 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 ------------------------------------------------------------------------------------------------ */
 
 const validateEmail = (email) => {
-   const regex = /^((([!#$%&'*+\-/=?^_`{|}~\w])|([!#$%&'*+\-/=?^_`{|}~\w][!#$%&'*+\-/=?^_`{|}~\.\w]{0,}[!#$%&'*+\-/=?^_`{|}~\w]))[@]\w+([-.]\w+)*\.\w+([-.]\w+)*)$/;
-   return regex.test(email);
+  const mailRegex = /^([a-z0-9]*).?([a-z0-9]*)\b@([a-z0-9]*).(net|com|org)$/gim;
+  return mailRegex.test(email);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -92,6 +90,16 @@ findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])
 
 const findTagNames = elements => {
   // Solution code here...
+  const regex = /\/\w*/gm;
+  let result = [];
+  elements.forEach(element => {
+    result.push(element.match(regex));
+  });
+  let tagArray = [];
+  for(let i = 0 ; i < result.length ; i++) {
+    tagArray = tagArray.concat(result[i]);
+  }
+  return tagArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -107,9 +115,9 @@ Run your tests from the console: jest solutions-11.test.js
 describe('Testing challenge 1', () => {
   test('It should convert object to full name string', () => {
 
-    const people = [{ firstName: "Jane", lastName: "Doe" }, { firstName: "James", lastName: "Bond" }];
+    const people = [{ firstName: 'Jane', lastName: 'Doe' }, { firstName: 'James', lastName: 'Bond' }];
 
-    expect(toLastNames(people)).toStrictEqual(["Jane Doe", "James Bond"]);
+    expect(toLastNames(people)).toStrictEqual(['Jane Doe', 'James Bond']);
 
   });
 });

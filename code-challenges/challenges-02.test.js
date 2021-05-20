@@ -1,7 +1,7 @@
 'use strict';
 
 /* ------------------------------------------------------------------------------------------------
-// contributions Alan Hung 
+// contributions Alan Hung
 CHALLENGE 1 - Review
 
 Write a function named raisedToTheThird that takes in an array of numbers and returns a new array of each of those numbers raised to the 3rd power (hint: look up Math.pow()). Use forEach to solve this problem.
@@ -10,10 +10,10 @@ Write a function named raisedToTheThird that takes in an array of numbers and re
 
 const raisedToTheThird = (arr) => {
   arr.forEach((numbers, index) => {
-    arr[index]= Math.pow(numbers, 3)
-     });
+    arr[index]= Math.pow(numbers, 3);
+  });
   return arr;
-}
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -23,7 +23,7 @@ Write a function that appends ' The end.' to a string, and returns the modified 
 ------------------------------------------------------------------------------------------------ */
 
 const appendTheEnd = (str) => {
- return `${str} The end.`;
+  return `${str} The end.`;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -75,9 +75,7 @@ setStatusAsAuthor(people);
 console.log(people[1].isAuthor) prints true
 ------------------------------------------------------------------------------------------------ */
 
-const setStatusAsAuthor = (people) => {
-  // Solution code here...
-};
+const setStatusAsAuthor = people => people.forEach(person => person.isAuthor = true);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6 - Stretch Goal
@@ -94,10 +92,7 @@ append(a, b);
 console.log(a) prints [1, 2, 3, 4]
 ------------------------------------------------------------------------------------------------ */
 
-const append = (arr1, arr2) => {
-  // Solution code here...
-
-};
+const append = (arr1, arr2) => arr2.forEach(value => arr1.push(value));
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
