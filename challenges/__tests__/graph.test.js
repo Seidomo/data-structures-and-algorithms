@@ -54,34 +54,34 @@ describe('testing if the graph works', () => {
     expect(graph.adjacencyList.get(one)).toBeTruthy();
   });
 
-  test('should return the size of the graph', () =>{
-    let graph = new graphs.Graph();
+  // test('should return the size of the graph', () =>{
+  //   let graph = new graphs.Graph();
 
-    let one = new graphs.Vertex('101');
-    let two = new graphs.Vertex('201');
-    let three = new graphs.Vertex('301');
-    let four = new graphs.Vertex('401');
-    let five = new graphs.Vertex('code');
-    let six = new graphs.Vertex('fellows');
-
-
-    graph.addNode(one);
-    graph.addNode(two);
-    graph.addNode(three);
-    graph.addNode(four);
-    graph.addNode(five);
-    graph.addNode(six);
-
-    graph.addEdge(one, three);
-    graph.addEdge(two, four);
-    graph.addEdge(one, four);
-    graph.addEdge(four, two);
-    graph.addEdge(four, five);
-    graph.addEdge(two, six);
+  //   let one = new graphs.Vertex('101');
+  //   let two = new graphs.Vertex('201');
+  //   let three = new graphs.Vertex('301');
+  //   let four = new graphs.Vertex('401');
+  //   let five = new graphs.Vertex('code');
+  //   let six = new graphs.Vertex('fellows');
 
 
-    expect(graph.breadthFirst(one).size).toEqual(6);
+  //   graph.addNode(one);
+  //   graph.addNode(two);
+  //   graph.addNode(three);
+  //   graph.addNode(four);
+  //   graph.addNode(five);
+  //   graph.addNode(six);
 
-  });
+  //   graph.addEdge(one, three);
+  //   graph.addEdge(two, four);
+  //   graph.addEdge(one, four);
+  //   graph.addEdge(four, two);
+  //   graph.addEdge(four, five);
+  //   graph.addEdge(two, six);
+
+
+  //   expect(graph.breadthFirst(one).size).toEqual(6);
+
+  // });
 
 });

@@ -11,19 +11,19 @@ Write a function named templateWithJQuery that uses jQuery to get the html templ
 ------------------------------------------------------------------------------------------------ */
 let starWarsPeople = [
   {
-    "name": "Luke Skywalker",
-    "height": "172",
-    "eye_color": "blue"
+    'name': 'Luke Skywalker',
+    'height': '172',
+    'eye_color': 'blue'
   },
   {
-    "name": "C-3PO",
-    "height": "167",
-    "eye_color": "yellow"
+    'name': 'C-3PO',
+    'height': '167',
+    'eye_color': 'yellow'
   },
   {
-    "name": "R2-D2",
-    "height": "96",
-    "eye_color": "red"
+    'name': 'R2-D2',
+    'height': '96',
+    'eye_color': 'red'
   }
 ];
 
@@ -39,17 +39,17 @@ let $ = createSnippetWithJQuery(`
 
 const templateWithJQuery = () => {
 
-   for(let i=0; i<starWarsPeople.length; i++){
-      const html = $('#template').clone();
-      
-      html.find('h2').text(starWarsPeople[i].name);
-      html.find('h3').text(starWarsPeople[i].height);
-      html.find('p').text(starWarsPeople[i].eye_color);
-      $('main').append(html);
-      html.removeAttr('id'); 
+  for(let i=0; i<starWarsPeople.length; i++){
+    const html = $('#template').clone();
+
+    html.find('h2').text(starWarsPeople[i].name);
+    html.find('h3').text(starWarsPeople[i].height);
+    html.find('p').text(starWarsPeople[i].eye_color);
+    $('main').append(html);
+    html.removeAttr('id');
   }
-  
-}
+
+};
 
 
 
@@ -85,8 +85,8 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 const wordsToCharList = (arr) => {
   const separateString = [];
   for( let i=0; i<arr.length; i++){
-      
-       separateString.push( arr.slice(i, i+1));
+
+    separateString.push( arr.slice(i, i+1));
   }
   return separateString;
 };
@@ -159,6 +159,12 @@ You may also use other string or array methods.
 const splitFoods = (recipe) => {
   let result = [];
   // Solution code here...
+  recipe.ingredients.forEach(item =>{
+    let splitIngredients = item.split(' ');
+    let itemNeeded = splitIngredients.slice(2, (splitIngredients.length + 1));
+    let itemForList = itemNeeded.join(' ');
+    result.push(itemForList);
+  });
   return result;
 };
 
@@ -175,6 +181,10 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 const stepActions = (recipe) => {
   let result = [];
   // Solution code here...
+  recipe.steps.forEach(item =>{
+    let doThisStep = item.split(' ');
+    result.push(doThisStep[0]);
+  });
   return result;
 };
 
@@ -193,6 +203,11 @@ For example:
 
 const removeEvenValues = (arr) => {
   // Solution code here...
+  for(let i = arr.length - 1 ; i >= 0 ; i--){
+    if(arr[i] % 2 === 0){
+      arr.splice(i,1);
+    }
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -212,6 +227,19 @@ removeLastCharacters('Gregor', 9) returns ''
 
 const removeLastCharacters = (str, numberOfCharacters) => {
   // Solution code here...
+  let modString = '';
+
+  if(numberOfCharacters < 0){
+    modString = str;
+  }
+  if(numberOfCharacters <= str.length && numberOfCharacters >= 0){
+    const stringArray = str.split('');
+    for(let i = 0 ; i < numberOfCharacters; i++){
+      stringArray.pop();
+    }
+    modString = stringArray.join('');
+  }
+  return modString;
 };
 
 
@@ -223,6 +251,11 @@ Write a function named totalSumCSV that, given a string of comma-separated value
 
 const totalSumCSV = (str) => {
   let total = 0;
+  const sumArray = str.split(',');
+  for(let i = 0 ; i < sumArray.length ; i++){
+    let numberConversion = Number(sumArray[i]);
+    total += numberConversion;
+  }
   // Solution code here...
   return total;
 };
@@ -252,6 +285,7 @@ Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioo
 
 const extractVowels = (str) => {
   // Solution code here...
+  return str.replace(/[aeiou]/gi, '');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -271,7 +305,7 @@ describe('Testing challenge 1', () => {
     expect($('section:nth-child(2) h2').text()).toStrictEqual('Luke Skywalker');
     expect($('section:nth-child(3) h3').text()).toStrictEqual('167');
     expect($('section:nth-child(4) p').text()).toStrictEqual('red');
-  })
+  });
 });
 
 describe('Testing challenge 2', () => {
@@ -369,4 +403,4 @@ xdescribe('Testing challenge 11', () => {
 
 function createSnippetWithJQuery(html){
   return cheerio.load(html);
-};
+}

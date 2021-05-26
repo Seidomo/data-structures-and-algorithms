@@ -1,58 +1,111 @@
 'use strict';
 
-
-class Node {
-  constructor(value){
+class KaryNode {
+  constructor(value, size) {
     this.value = value;
-    this.left = null;
-    this.right = null;
+    this.children = new Array(size); // [undefined, undefined, undefined]
   }
 }
 
-class BinaryTree{
-  constructor(val){
+class KaryTree {
+  constructor(k) {
     this.root = null;
-    this.val = val;
+    this.k = k;
+  }
+
+  breadth() {
+
+    let current = null;
+    let queue = [];
+    let array = [];
+
+    queue.unshift(this.root);
+
+    while (queue.length) {
+
+      current = queue.pop();
+      array.push(current.value);
+
+
+      for (let i = 0; i < current.children.length; i++) {
+        if (current.children[i]) {
+          queue.unshift(current.children[i]);
+        }
+      }
+    }
+
+    return array;
+
   }
 }
 
-function fizzBuzztree(tree){
-  let newTree = new BinaryTree();
-  newTree.root = fizzBuzzRecursion(tree.root);
-  return newTree;
+function fizzBuzzTree(kAryTree) {
+  if(kAryTree.root === null || isNaN(kAryTree.root.value)) {
+    return 'Exception - Tree contains no values or non-numeric values';
+  }
+
+  // brute force method to avoid mutating original tree
+  let transfer = JSON.stringify(kAryTree);
+  const returnTree = JSON.parse(transfer);
+
+  let current;
+  let queue = [];
+
+  queue.unshift(returnTree.root);
+
+  while(queue.length) {
+    current = queue.pop();
+
+    if(current.value % 15 === 0) {
+      current.value = 'FizzBuzz';
+    } else if(current.value % 5 === 0) {
+      current.value = 'Buzz';
+    } else if(current.value % 3 === 0) {
+      current.value = 'Fizz';
+    } else {
+      current.value = `${current.value}`;
+    }
+
+    for (let i = 0; i < current.children.length; i++) {
+      if(current.children[i]) {
+        queue.unshift(current.children[i]);
+      } 
+    }
+  }
+
+  return returnTree;
 }
 
-function fizzBuzzRecursion(root){
-  let newNode;
-  if(root.value % 15 === 0){
-    newNode = new Node('fizzbuzz');
 
-  }else if (root.value % 3 === 0){
-    newNode = new Node('fizz');
-  }else if(root.value % 5 === 0){
-    newNode = new Node('buzz');
+function breadthFirst(tree) {
+
+  let current = null;
+  let queue = [];
+  let array = [];
+
+  queue.unshift(tree.root);
+
+  while (queue.length) {
+
+    current = queue.pop();
+    array.push(current.value);
+
+
+    for (let i = 0; i < current.children.length; i++) {
+      if (current.children[i]) {
+        queue.unshift(current.children[i]);
+      }
+    }
   }
 
-  else{
-    newNode = new Node(`${root.value}`);
-  }
+  return array;
 
-  if(root.left){
-    newNode.left = fizzBuzzRecursion(root.left);
-  }
-
-  if(root.right){
-    newNode.right = fizzBuzzRecursion(root.right);
-  }
-
-  return newNode;
 }
-
 
 
 module.exports = {
-  fizzBuzztree: fizzBuzztree,
-  Node: Node,
-  BinaryTree: BinaryTree,
-
+  KaryNode: KaryNode,
+  KaryTree: KaryTree,
+  fizzBuzzTree: fizzBuzzTree,
+  breadthFirst: breadthFirst,
 };

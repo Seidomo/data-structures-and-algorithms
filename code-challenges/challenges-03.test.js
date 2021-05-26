@@ -19,7 +19,7 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const changeAllClassNames = () => {
- $('li').addClass("fruit");
+  $('li').addClass('fruit');
 };
 //
 /* ------------------------------------------------------------------------------------------------
@@ -29,7 +29,7 @@ Write a function named sortBackwards that takes in an array of numbers and retur
 ------------------------------------------------------------------------------------------------ */
 
 const sortBackwards = (arr) => {
- return arr.sort((a, b) => b - a);
+  return arr.sort((a, b) => b - a);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ Write a function named sortByLength that takes in an array of strings and return
 ------------------------------------------------------------------------------------------------ */
 
 const sortByLength = (arr) => {
- return arr.sort((a, b) => a.length - b.length);
+  return arr.sort((a, b) => a.length - b.length);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -65,7 +65,16 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 ------------------------------------------------------------------------------------------------ */
 
 const alphabetizeBetter = (arr) => {
-  // Solution code here...
+  arr.sort((a, b) => {
+    if (a.toLowerCase() < b.toLowerCase()) {
+      return -1;
+    } else if (a.toLowerCase() > b.toLowerCase()) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -83,6 +92,16 @@ Here is an example of the input:
 
 const sortByPrice = (arr) => {
   // Solution code here...
+  arr.sort((a, b) => {
+    if (a.price < b.price) {
+      return -1;
+    } else if (a.price > b.price) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -95,6 +114,17 @@ For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 
 const sortNumbersByLength = (arr) => {
   // Solution code here...
+  arr.sort((a, b) => {
+    if (a.toString().length < b.toString().length) {
+      return -1;
+    } else if (a.toString().length > b.toString().length) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+  arr.forEach((element) => Number(element));
+  return arr;
 };
 
 /*-----------------------------------------------------------------------------------------------

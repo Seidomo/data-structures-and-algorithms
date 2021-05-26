@@ -16,7 +16,7 @@ const maxInArray = (arr) => {
       accumulator = currentValue;
     }
     return accumulator;
-  },0)
+  },0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -42,15 +42,15 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
- let totalOfTotal = [];
- for(let i=0; i< hoursOpen.length; i++){
-   let add = 0;
-   for (let j=0; j< stores.length; j++){
-     add = add + stores[j][i];
-   }
-   totalOfTotal.push(add);
- }
-return totalOfTotal;
+  let totalOfTotal = [];
+  for(let i=0; i< hoursOpen.length; i++){
+    let add = 0;
+    for (let j=0; j< stores.length; j++){
+      add = add + stores[j][i];
+    }
+    totalOfTotal.push(add);
+  }
+  return totalOfTotal;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -64,11 +64,11 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
- let eachHour = [];
- hours.map((value, items)=>{
-   eachHour.push({sales: `${data[items]} cookies`, time:value});
- })
- return eachHour;
+  let eachHour = [];
+  hours.map((value, items)=>{
+    eachHour.push({sales: `${data[items]} cookies`, time:value});
+  });
+  return eachHour;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -99,8 +99,8 @@ const howManyTreats = (arr) => {
       if (result.name === 'Treats'){
         starter = result.quantity;
       }
-    })
-  })
+    });
+  });
   return starter;
 };
 
@@ -124,6 +124,11 @@ The top row of the board is considered row zero and row numbers increase as they
 
 const battleship = (board, row, col) => {
   //  Solution code here...
+  if(board[row][col] === '#'){
+    return 'hit';
+  } else {
+    return 'miss';
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -136,6 +141,13 @@ For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 
 const calculateProduct = (numbers) => {
   // Solution code here...
+  let totalProduct = 1;
+  for(let i = 0 ; i < numbers.length ; i++){
+    for(let j = 0 ; j < numbers[i].length; j++){
+      totalProduct = totalProduct * numbers[i][j];
+    }
+  }
+  return totalProduct;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -156,6 +168,15 @@ const weeklyTemperatures = [
 
 const averageDailyTemperature = (weather) => {
   // Solution code here...
+  let averageTemp = 0;
+  for(let i = 0 ; i < weather.length ; i++){
+    let tempAccum = weather[i].reduce((accum, val) => {
+      accum+= val;
+      return accum;
+    });
+    averageTemp+= tempAccum;
+  }
+  return averageTemp/(7 * weather.length);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -177,6 +198,18 @@ let lowestWeeklyTemperatureData = [
 
 const lowestWeeklyAverage = (weather) => {
   // Solution code here...
+  let lowestAverageTemp = 212;
+  for(let i = 0 ; i < weather.length ; i++){
+    let tempAccum = weather[i].reduce((accum, val) => {
+      accum+= val;
+      return accum;
+    });
+    let tempAvg = tempAccum / 7;
+    if(tempAvg < lowestAverageTemp){
+      lowestAverageTemp = tempAvg;
+    }
+  }
+  return lowestAverageTemp;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -193,6 +226,18 @@ For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 
 const excel = (str) => {
   // Solution code here...
+  const rowArray = str.split('\n');
+  const tableArray = rowArray.map(value => value.split(','));
+  for(let i = 0 ; i < tableArray.length ; i++){
+    for(let j = 0 ; j < tableArray[i].length ; j++){
+      tableArray[i][j] = Number(tableArray[i][j]);
+    }
+    tableArray[i] = tableArray[i].reduce((accum, value) => {
+      accum+= value;
+      return accum;
+    }, 0);
+  }
+  return tableArray;
 };
 
 /* ------------------------------------------------------------------------------------------------

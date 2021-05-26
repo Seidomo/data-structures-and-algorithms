@@ -22,11 +22,11 @@ let $ = createSnippetWithJQuery(`
 </section>
 `);
 
-const generateSubmitButton = () => { 
-  const submitButton = '<button>submit</button>'
+const generateSubmitButton = () => {
+  const submitButton = '<button>submit</button>';
   $('form').append(submitButton);
- 
-}
+
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -54,7 +54,7 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  
+
   const findLetter = /\b[A-Z]\w*/gm;
   const stringOutput = str.match(findLetter);
   if(stringOutput){
@@ -71,18 +71,18 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  
+
   const cityNames = /^\b[A-J]\w*/;
   const cities = [];
   for (let i=0; i<arr.length; i++){
     if (cityNames.test(arr[i])){
       cities.push( arr[i]);
     }
-    
-    
 
-  } 
-   return cities
+
+
+  }
+  return cities;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -99,7 +99,15 @@ Do not use the vertical bar (pipe) in your pattern.
 
 const matchMonth = (input) => {
 
-  
+  const monthMatch = /\b(oct)/i;
+  let startsWith = monthMatch.test(input.toString());
+  if(startsWith){
+    if(input.length > 3){
+      const fullMonthMatch = /^([oO]ctober)$/;
+      startsWith = fullMonthMatch.test(input.toString());
+    }
+    return startsWith;
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -114,6 +122,12 @@ The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "
 
 const noPunctuation = str => {
   // Solution code here...
+  const trailingSpace = /\b[a-z0-9]*\s/gi;
+  let spaceArray = str.match(trailingSpace);
+  if(spaceArray === null){
+    spaceArray = [];
+  }
+  return spaceArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -130,6 +144,9 @@ For example, 'Welcome to Code 301!' will return 'W_lc_m_ t_ C_d_ 301!'.
 
 let hangman = (str) => {
   // Solution code here...
+  const vowelFind = /[aeiou]/gi;
+  let unVoweled = str.replace(vowelFind, '_');
+  return unVoweled;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -146,6 +163,9 @@ const seashells = 'She sells seashells by the seashore. The shells she sells are
 
 const findShells = (str) => {
   // Solution code here...
+  const ellsFind = /[a-z]*(ells)\b/gi;
+  return str.match(ellsFind);
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -162,7 +182,7 @@ describe('Testing challenge 1', () => {
   test('It should add a submit button to the DOM', () => {
     generateSubmitButton();
     expect($('button').text()).toStrictEqual('submit');
-  })
+  });
 });
 
 describe('Testing challenge 2', () => {
@@ -262,4 +282,4 @@ xdescribe('Testing challenge 8', () => {
 
 function createSnippetWithJQuery(html){
   return cheerio.load(html);
-};
+}

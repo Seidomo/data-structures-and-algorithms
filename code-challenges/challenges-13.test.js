@@ -20,7 +20,7 @@ const $ = createSnippetWithJQuery(`
 `);
 
 const fixTheTypo = () => {
- $('.pear').text('Pear');
+  $('.pear').text('Pear');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -33,7 +33,7 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 
 
 const firstLetters = (arr) => {
   let firstLetters = arr.map(result => result.slice(0, 1));
- return firstLetters;
+  return firstLetters;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -59,6 +59,14 @@ For example, (123) 456-7890 returns 1234567890
 
 const standardizePhoneNumbers = (arr) => {
   // Solution code here...
+  return arr.map(value => {
+    let stringArray = value.split('');
+    stringArray.splice(9,1);
+    stringArray.splice(4,2);
+    stringArray.splice(0,1);
+    let newString = stringArray.join('');
+    return newString;
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -71,6 +79,14 @@ For example, 'abcdefg' returns 'bdf'
 
 const onlyOddChars = (str) => {
   // Solution code here...
+  const splitString = str.split('');
+  const filterString = splitString.filter((char, idx) => {
+    if((idx % 2) !== 0){
+      return true;
+    }
+  });
+  const finalString = filterString.join('');
+  return finalString;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -81,6 +97,15 @@ Write a function named allHappy that takes in an array of strings and returns a 
 
 const allHappy = (arr) => {
   // Solution code here...
+  const answer = arr.reduce((accum, element) => {
+    if(accum === false || typeof(element) !== 'string' || !element.includes(':)')){
+      accum = false;
+    } else {
+      accum = true;
+    }
+    return accum;
+  }, true);
+  return answer;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -91,6 +116,8 @@ Write a function named findAnything that takes in an array of strings, along wit
 
 const findAnything = (arr, target) => {
   // Solution code here...
+  const answer = arr.filter(element =>element.includes(target));
+  return answer;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -101,6 +128,15 @@ Write a function named findEvery that takes in an array of strings, along with a
 
 const findEvery = (arr, target) => {
   // Solution code here...
+  const inEvery = arr.reduce((accum, str) => {
+    if(accum === false || !str.includes(target)){
+      accum = false;
+    } else {
+      accum = true;
+    }
+    return accum;
+  }, true);
+  return inEvery;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -117,6 +153,17 @@ For example, [['Brook Testing', 'Actual Person'], ['Human Person', 'Brook again'
 
 const unenrollBrook = (arr) => {
   // Solution code here...
+  const brookless = arr.map(course => {
+    const courseCorrect = course.filter(student => {
+      if(!student.includes('Brook')){
+        return true;
+      } else {
+        return false;
+      }
+    });
+    return courseCorrect;
+  });
+  return brookless;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -144,6 +191,17 @@ const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Sat
 
 const sortByDay = (arr) => {
   // Solution code here...
+  const sortedSchedule = daysOfWeek.map(day => {
+    const byDay = arr.filter(event => {
+      if(event.includes(day)){
+        return true;
+      } else {
+        return false;
+      }
+    });
+    return byDay;
+  });
+  return sortedSchedule;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -156,6 +214,11 @@ For example, ['abcd', 'efgh', 'ijkl', 'mnop'] returns ['a', 'f', 'k', 'p']
 
 const characterByIndex = (arr) => {
   // Solution code here...
+  const letterArray = arr.map((str, idx) => {
+    return str.charAt(idx);
+  });
+  return letterArray;
+
 };
 
 /* ------------------------------------------------------------------------------------------------

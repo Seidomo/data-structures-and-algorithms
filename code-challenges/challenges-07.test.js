@@ -22,8 +22,8 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const addTea = () => {
- $("ul").append("<li>tea</li>");
-}
+  $('ul').append('<li>tea</li>');
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -53,7 +53,7 @@ const forEachTwoToThe = (arr) => {
   const result = [];
   arr.forEach(oldArrayValue =>{
     result.push(Math.pow(2, oldArrayValue));
-  })
+  });
   return result;
 };
 
@@ -79,6 +79,11 @@ For example: charCode(['h','i']) returns [104, 105].
 
 const charCode = (arr) => {
   // Solution code here...
+  const charCodeArray = arr.map((val) => {
+    const str = val.toString();
+    return str.charCodeAt();
+  });
+  return charCodeArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -93,6 +98,18 @@ For example: evenOdd([1,2,3]) returns ['odd','even','odd'].
 
 const evenOdd = (arr) => {
   // Solution code here...
+  const evenOrOdd = arr.map(val => {
+    if(typeof(val) !== 'number'){
+      return 'N/A';
+    }
+    if(val % 2 === 0){
+      return 'even';
+    } else {
+      return 'odd';
+    }
+  });
+  return evenOrOdd;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -139,6 +156,10 @@ const snorlaxAbilities = {
 
 const extractAbilities = (arr) => {
   // Solution code here...
+  const abilityArray = arr.map(val => {
+    return val.ability.name;
+  });
+  return abilityArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -186,6 +207,11 @@ const snorlaxStats = {
 
 const extractStats = (arr) => {
   // Solution code here...
+  const statTotal = arr.map(val => {
+    const sumTotal = val.effort + val.baseStat;
+    return {name: val.stat.name, total: sumTotal};
+  });
+  return statTotal;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -203,7 +229,7 @@ describe('Testing challenge 1', () => {
   test('It should add tea to the list', () => {
     addTea();
     expect($('li:nth-child(6)').text()).toStrictEqual('tea');
-  })
+  });
 });
 
 describe('Testing challenge 2', () => {
@@ -288,4 +314,4 @@ xdescribe('Testing challenge 8', () => {
 
 function createSnippetWithJQuery(html){
   return cheerio.load(html);
-};
+}

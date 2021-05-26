@@ -39,7 +39,8 @@ class Graph {
   // helper function to help with traversals
   getNeighbors(vertex) {
     if (!this.adjacencyList.has(vertex)) {
-      throw new Error('no neighbors for that vertex');
+      // throw new Error('no neighbors for that vertex');
+      return null;
     }
 
     return [...this.adjacencyList.get(vertex)]; // spread into new array to avoid mutation.
@@ -52,34 +53,70 @@ class Graph {
 
   //   }
 
-  breadFirst(vertex) {
+  breadthFirst(vertex) {
+    if(!this.size()) {
+      return null;
+    }
 
-    const queue = []; // order of visited node will be FiFo
-    const visited = new Set(); // track any visited vertices
+    const queue = [];
+    const visited = new Set();
+    const valueArray = [];
 
     queue.unshift(vertex);
     visited.add(vertex);
+    valueArray.push(vertex.value);
 
     while (queue.length) {
 
       const currentVertex = queue.pop();
-      const neighbors = this.getNeighbors(currentVertex); // gives us an array of neighbors;
+      const neighbors = this.getNeighbors(currentVertex);
 
-      for (let neighbor of neighbors) { // each neighbor is an edge
+      for (let neighbor of neighbors) {
 
         const neighborVertex = neighbor.vertex;
 
-        if (visited.has(neighborVertex)) { // if we have already visited skip
+        if (visited.has(neighborVertex)) {
           continue;
-        } else { // if not add to visited list, and queue it up
+        } else {
           visited.add(neighborVertex);
+          valueArray.push({ neighbor: neighborVertex.value, weight: neighbor.weight });
           queue.unshift(neighborVertex);
         }
       }
     }
 
-    return visited;
+    return valueArray;
   }
+
+
+  // breadFirst(vertex) {
+
+  //   const queue = []; // order of visited node will be FiFo
+  //   const visited = new Set(); // track any visited vertices
+
+  //   queue.unshift(vertex);
+  //   visited.add(vertex);
+
+  //   while (queue.length) {
+
+  //     const currentVertex = queue.pop();
+  //     const neighbors = this.getNeighbors(currentVertex); // gives us an array of neighbors;
+
+  //     for (let neighbor of neighbors) { // each neighbor is an edge
+
+  //       const neighborVertex = neighbor.vertex;
+
+  //       if (visited.has(neighborVertex)) { // if we have already visited skip
+  //         continue;
+  //       } else { // if not add to visited list, and queue it up
+  //         visited.add(neighborVertex);
+  //         queue.unshift(neighborVertex);
+  //       }
+  //     }
+  //   }
+
+  //   return visited;
+  // }
 
   depthFirst(vertex) {
 
@@ -122,9 +159,8 @@ class Graph {
     return visitedVertices;
   }
 
-  size(start){
-    let graphArr = this.breadFirst(start);
-    return graphArr.lenght;
+  size(){
+    return this.adjacencyList.size;
   }
 }
 

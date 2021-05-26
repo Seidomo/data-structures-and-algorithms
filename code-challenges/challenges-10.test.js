@@ -1,6 +1,6 @@
 'use strict';
 
-const { response } = require('express');
+// const express = require('express');
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
@@ -14,20 +14,20 @@ const createServer = () => {
 
   app.get('/hello', (req, res) =>{
     res.send('selam peace');
-  })
+  });
 
   app.get('/aboutme', (req, res)=>{
     res.send('I am a software developer');
-  })
+  });
 
   app.get('/favoritefoods', (req, res) =>{
     res.send('tibs, zilzil, pasta, tire');
-  })
+  });
 
-  app.use('*', (req, res)=>{
-    response.status(404).send('sorry!');
-  })
-  var server = app.listen(3301, function () {
+  app.get('*', (req, res)=>{
+    res.status(404).send('sorry!');
+  });
+  var server = app.listen(3001, function () {
     var port = server.address().port;
     console.log('Example app listening at port', port);
   });
@@ -51,8 +51,8 @@ const count = (target, input) => {
       if (target === newarr){
         counter++;
       }
-    })
-  })
+    });
+  });
   return counter;
 };
 
@@ -71,8 +71,8 @@ const totalSum = (input) => {
   input.map(firstArr =>{
     firstArr.map(int =>{
       sumOfArr += int;
-    })
-  })
+    });
+  });
   return sumOfArr;
 };
 
@@ -89,7 +89,17 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
- 
+  let newArray = [];
+  for(let i = 0 ; i < input.length ; i++){
+    let dividedArray = input[i].filter(value => {
+      if(typeof(value) === 'number' && !(value % 5)){
+        return true;
+      }
+    });
+    let powerArray = dividedArray.map(value => Math.pow(2, value));
+    newArray.push(powerArray);
+  }
+  return newArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -156,6 +166,10 @@ let starWarsData = [{
 
 let findMaleAndFemale = (data) => {
   // Solution code here...
+  const nameArray = data.filter(obj => (obj.gender === 'male' || obj.gender === 'female'));
+  const malesAndFemales = nameArray.map(person => person.name);
+  const nameString = malesAndFemales.join(' and ');
+  return nameString;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -166,6 +180,14 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 
 let findShortest = (data) => {
   // Solution code here...
+  const person = data.reduce((accum, entry) => {
+    if(Number(entry.height) < Number(accum.height)){
+      accum = entry;
+    }
+    return accum;
+  }, data[0]);
+  return person.name;
+
 };
 
 /* ------------------------------------------------------------------------------------------------

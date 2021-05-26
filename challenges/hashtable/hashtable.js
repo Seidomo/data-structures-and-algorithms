@@ -112,7 +112,7 @@ class HashTable {
     }
   }
 
-  }
+}
 
 
 let table = new HashTable(1024);
@@ -131,7 +131,7 @@ table.add('jacbo', 'ta');
 
 
 module.exports = {
-   Node,
-   LinkedList,
-   HashTable,
+  Node,
+  LinkedList,
+  HashTable,
 };

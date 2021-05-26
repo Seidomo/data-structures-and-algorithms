@@ -35,7 +35,7 @@ For example, oddValues([1,2,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
 const oddValues = (arr) => {
- return arr.filter(newArr => newArr % 2);
+  return arr.filter(newArr => newArr % 2);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -50,8 +50,8 @@ For example, filterStringsWithVowels('gregor','hound','xyz') returns ['gregor', 
 
 
 const filterStringsWithVowels = (arr) => {
-  const vowelsByRegex = /(a|e|i|o|U)/;
-  return arr.filter(allVowels => vowelsByRegex.test(allVowels));
+  const myRegex = /[aeiou]/i;
+  return arr.filter(val => myRegex.test(val));
 };
 
 
@@ -108,6 +108,7 @@ const snorlaxData = {
 
 const getBaseStatGreaterThan = (arr, minBaseStat) => {
   // Solution code here...
+  return arr.filter(val => val.baseStat > minBaseStat);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -120,6 +121,10 @@ For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 
 
 const getStatName = (arr, minBaseStat) => {
   // Solution code here...
+  const statArray = [];
+  const filteredArr = arr.filter(val => val.baseStat > minBaseStat);
+  filteredArr.forEach(val => statArray.push(val.stat.name));
+  return statArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -173,6 +178,7 @@ const characters = [
 
 const getCharactersWithoutChildren = (arr) => {
   // Solution code here...
+  return arr.filter(val => val.children === undefined);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -185,6 +191,16 @@ For example: evenOddNumericValues(['Gregor', 2, 4, 1]) returns ['even', 'even', 
 
 const evenOddNumericValues = (arr) => {
   // Solution code here...
+  const numbersOnly = arr.filter(val => typeof(val) === 'number');
+  const evenOrOdd = numbersOnly.map(val => {
+    if(val % 2){
+      return 'odd';
+    } else {
+      return 'even';
+    }
+  });
+  return evenOrOdd;
+
 };
 
 /* ------------------------------------------------------------------------------------------------

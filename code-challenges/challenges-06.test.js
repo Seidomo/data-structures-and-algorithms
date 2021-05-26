@@ -74,16 +74,16 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const templatingWithMustache = () => {
-  
- 
+
+
   const characterValue = [];
   for(let i=0; i<characters.length; i++){
     const characterCopy = $('#template').html();
-    
+
     characterValue.push(Mustache.render(characterCopy, characters[i]));
   }
   return characterValue;
-  
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -95,7 +95,7 @@ For example: (['name', 'duration', 'topics', 'finalExam']).
 
 done: Write a function named getCourseKeys
 done: that takes in the courseInfo object
-done: and returns an array 
+done: and returns an array
 todo: containing the keys for the courseInfo object.
 ------------------------------------------------------------------------------------------------ */
 const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
@@ -103,17 +103,14 @@ const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningT
   finalExam: true
 };
 
-const getCourseKeys = (obj) => {
-  return Object.keys(courseInfo);
-  
-};
+const getCourseKeys = obj => Object.keys(obj);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 
 Write a function named getHouses that returns a new array containing the names of all of the houses in the data set.
 
-done: Write a function named getHouses 
+done: Write a function named getHouses
 done: that returns a new array
 todo: containing the names of all of the houses in the data set.
 return with house names
@@ -123,9 +120,9 @@ return with house names
 const getHouses = (arr) => {
   let houses = [];
   for(let i=0; i<arr.length; i++){
-   houses.push(arr[i].house);
+    houses.push(arr[i].house);
   }
-  
+
   return houses;
 };
 
@@ -143,7 +140,7 @@ hasChildrenValues(characters, 'Sansa') will return false
 todo: Write a function named hasChildrenValues
 todo: that uses Object.values
 todo: to determine if any given character in the data set has children.
-    todo: first find the name inside an array 
+    todo: first find the name inside an array
         todo: for each
         todo: access the array by index
             todo: access the object by .
@@ -151,7 +148,7 @@ todo: to determine if any given character in the data set has children.
                 todo: need to get  .children
                     todo: only check if it has values
                         todo: by checking the length of the array
-                todo: need to get .spouse 
+                todo: need to get .spouse
         todo:if statment to compare if the name has children
 todo: return boolean (true or false)
 
@@ -160,13 +157,13 @@ todo: return boolean (true or false)
 
 const hasChildrenValues = (arr, character) => {
   let childrenValue = false;
- arr.forEach(objectsArray =>{
-   var getObjectValue = Object.values(objectsArray);
-   if(getObjectValue[0] === character || getObjectValue[1]===character){
-     childrenValue = !(getObjectValue[2] ===[]);
-   }
- })
-return childrenValue;
+  arr.forEach(objectsArray =>{
+    var getObjectValue = Object.values(objectsArray);
+    if(getObjectValue[0] === character || getObjectValue[1]===character){
+      childrenValue = !(getObjectValue[2] ===[]);
+    }
+  });
+  return childrenValue;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -178,7 +175,16 @@ The input and output of this function are the same as the input and output from 
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenEntries = (arr, character) => {
-  // Solution code here...
+  let hasChildren = false;
+  arr.forEach(person => {
+    let childCheck = Object.entries(person);
+    if(childCheck[0].includes(character)){
+      if(childCheck[2][1][0]){
+        hasChildren = true;
+      }
+    }
+  });
+  return hasChildren;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -188,7 +194,16 @@ Write a function named totalCharacters that takes in an array and returns the nu
 ------------------------------------------------------------------------------------------------ */
 
 const totalCharacters = (arr) => {
-  // Solution code here...
+  let numberOfCharacters = 0;
+  arr.forEach(family => {
+    let personCounter = Object.entries(family);
+    numberOfCharacters++;
+    if(personCounter[1][1] !== null){
+      numberOfCharacters++;
+    }
+    numberOfCharacters += personCounter[2][1].length;
+  });
+  return numberOfCharacters;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -203,7 +218,20 @@ For example: [{ house: 'Stark', members: 7 }, { house: 'Arryn', members: 3 }, ..
 
 const houseSize = (arr) => {
   const sizes = [];
-  // Solution code here...
+  arr.forEach(household => {
+    let counter = 1;
+    if(household.spouse !== null){
+      counter++;
+    }
+    counter+= household.children.length;
+
+    const houseMembers = {
+      house: household.house,
+      members: counter
+    };
+
+    sizes.push(houseMembers);
+  });
   return sizes;
 };
 
@@ -227,7 +255,22 @@ const deceasedSpouses = ['Catelyn', 'Lysa', 'Robert', 'Khal Drogo', 'Alerie'];
 
 const houseSurvivors = (arr) => {
   const survivors = [];
-  // Solution code here...
+  arr.forEach(household => {
+    let counter = 1;
+    if(household.spouse === null || deceasedSpouses.includes(household.spouse)){
+      counter = 1;
+    } else {
+      counter++;
+    }
+    counter+= household.children.length;
+
+    const houseMembers = {
+      house: household.house,
+      members: counter
+    };
+
+    survivors.push(houseMembers);
+  });
   return survivors;
 };
 
